@@ -183,7 +183,7 @@ if(!isTouch && !prefersReduced){
   window.addEventListener("pointermove", function(e){ mouse.x = e.clientX; mouse.y = e.clientY; }, {passive:true});
   function dark(){ return document.documentElement.getAttribute("data-theme") === "dark"; }
   for(var i=0;i<COUNT;i++) parts.push({x:Math.random()*innerWidth, y:Math.random()*innerHeight, z:0.3+Math.random()*0.7, vx:(Math.random()-.5)*0.35, vy:(Math.random()-.5)*0.35, r:1.2+Math.random()*2.2});
-  var hues = [174, 199, 262, 38];
+  var hues = [268, 288, 190, 315];
   (function frame(){
     ctx.clearRect(0,0,W,H);
     var dk = dark(), i, p;
@@ -199,7 +199,7 @@ if(!isTouch && !prefersReduced){
     for(var a=0;a<parts.length;a++) for(var b=a+1;b<parts.length;b++){
       var pa = parts[a], pb = parts[b], ddx = pa.x-pb.x, ddy = pa.y-pb.y, d = Math.sqrt(ddx*ddx+ddy*ddy);
       if(d < 130){ ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y);
-        ctx.strokeStyle = dk ? "rgba(94,234,212,"+(0.10*(1-d/130))+")" : "rgba(13,148,136,"+(0.12*(1-d/130))+")";
+        ctx.strokeStyle = dk ? "rgba(103,232,249,"+(0.10*(1-d/130))+")" : "rgba(109,40,217,"+(0.12*(1-d/130))+")";
         ctx.lineWidth = 1; ctx.stroke(); }
     }
     requestAnimationFrame(frame);
