@@ -390,3 +390,16 @@ a{color:inherit}
 #chatForm button{width:44px;height:44px;border-radius:50%;border:0;background:var(--grad);color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0}
 @media(max-width:480px){#chatPanel{right:16px;bottom:92px}}
 @media(prefers-reduced-motion:reduce){#chatLauncher::after{animation:none}.msg{animation:none}}
+
+/* ============ Brand social icons (real logos) ============ */
+.footer-links a svg{width:22px;height:22px;display:block}
+.social-row a svg{width:17px;height:17px;flex-shrink:0;display:block}
+.contact-icon svg{width:24px;height:24px;display:block}
+.btn-icon svg{width:20px;height:20px;vertical-align:-4px;margin-right:.35rem}
+/* Brand colors on hover */
+a[aria-label="WhatsApp"]:hover svg{color:#25D366}
+a[aria-label="Instagram"]:hover svg{color:#E1306C}
+a[aria-label="Facebook"]:hover svg{color:#1877F2}
+a[aria-label="YouTube"]:hover svg{color:#FF0000}
+a[aria-label="GitHub"]:hover svg{color:#6e40c9}
+a[aria-label="Email"]:hover svg{color:var(--teal-deep)}
