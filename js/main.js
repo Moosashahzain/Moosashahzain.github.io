@@ -271,7 +271,8 @@ if(modal){
   document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !modal.hidden) closeModal(); });
 }
 
-/* ---------- Contact form (honest: no backend) ---------- */
+/* ---------- Contact form (Web3Forms backend — free) ---------- */
+var WEB3FORMS_KEY = "PASTE_YOUR_KEY_HERE"; // ← Moosa's free key from web3forms.com goes here
 var form = $("#contactForm");
 if(form){
   form.addEventListener("submit", function(e){
@@ -280,10 +281,37 @@ if(form){
     var status = $("#formStatus");
     if(!name || !email || !msg){ status.textContent = "Please fill in your name, email and message first."; return; }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ status.textContent = "That email address doesn't look quite right — please check it."; return; }
-    status.innerHTML = "Thanks, " + name.split(" ")[0] + "! This form isn't wired to a backend yet, so nothing was sent. " +
-      "The fastest way to reach Moosa is <a href=\"mailto:moosashahzain6@gmail.com\">email</a> or " +
-      "<a href=\"https://wa.me/923033837777\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.";
-    sfx("chime");
+    if(WEB3FORMS_KEY === "PASTE_YOUR_KEY_HERE"){
+      status.innerHTML = "Thanks, " + name.split(" ")[0] + "! This form isn't wired to a backend yet, so nothing was sent. " +
+        "The fastest way to reach Moosa is <a href=\"mailto:moosashahzain6@gmail.com\">email</a> or " +
+        "<a href=\"https://wa.me/923033837777\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.";
+      return;
+    }
+    status.textContent = "Sending…";
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        name: name, email: email, message: msg,
+        subject: "Portfolio message from " + name,
+        from_name: "Moosa's Portfolio",
+        botcheck: ""
+      })
+    }).then(function(r){ return r.json(); }).then(function(data){
+      btn.disabled = false;
+      if(data.success){
+        status.textContent = "Message sent! Moosa will get back to you soon. ✅";
+        form.reset(); sfx("chime");
+      }else{
+        status.innerHTML = "Couldn't send just now — please use <a href=\"mailto:moosashahzain6@gmail.com\">email</a> or <a href=\"https://wa.me/923033837777\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> instead.";
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      status.innerHTML = "Couldn't send just now — please use <a href=\"mailto:moosashahzain6@gmail.com\">email</a> or <a href=\"https://wa.me/923033837777\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> instead.";
+    });
   });
 }
 })();
