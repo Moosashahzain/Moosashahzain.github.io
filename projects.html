@@ -117,6 +117,23 @@
   </div>
 </footer>
 <button id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+<button id="chatLauncher" aria-expanded="false" aria-label="Chat with Moosa's assistant" title="Ask Moosa's assistant">🤖</button>
+<div id="chatPanel" role="dialog" aria-label="Chat with Moosa's assistant" hidden>
+  <div class="chat-head">
+    <div class="chat-avatar">🤖</div>
+    <div><strong>Moosa's Assistant</strong><small>Answers from Moosa's profile info</small></div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
+  </div>
+  <div id="chatMsgs" aria-live="polite"></div>
+  <div class="chat-chips">
+    <button class="chat-chip">Who is Moosa?</button>
+    <button class="chat-chip">His skills?</button>
+    <button class="chat-chip">Projects?</button>
+    <button class="chat-chip">Contact</button>
+  </div>
+  <form id="chatForm"><input id="chatInput" type="text" placeholder="Ask about Moosa…" autocomplete="off" aria-label="Type your question"><button type="submit" aria-label="Send">➤</button></form>
+</div>
 <script src="js/main.js"></script>
+<script src="js/assistant.js"></script>
 </body>
 </html>

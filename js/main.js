@@ -314,4 +314,6 @@ if(form){
     });
   });
 }
+/* expose sound kit for the assistant widget */
+window.sfx = sfx;
 })();
