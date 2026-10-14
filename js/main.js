@@ -298,7 +298,7 @@ if(form){
         name: name, email: email, message: msg,
         subject: "Portfolio message from " + name,
         from_name: "Moosa's Portfolio",
-        botcheck: ""
+        botcheck: false
       })
     }).then(function(r){ return r.json(); }).then(function(data){
       btn.disabled = false;
