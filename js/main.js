@@ -272,7 +272,7 @@ if(modal){
 }
 
 /* ---------- Contact form (Web3Forms backend — free) ---------- */
-var WEB3FORMS_KEY = "PASTE_YOUR_KEY_HERE"; // ← Moosa's free key from web3forms.com goes here
+var WEB3FORMS_KEY = "be16c4fe-7cbd-4a4f-b91d-83677a0c7f0c"; // Moosa's Web3Forms key (free plan)
 var form = $("#contactForm");
 if(form){
   form.addEventListener("submit", function(e){
